@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-500 rounded-full;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30 text-primary-200;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-bold text-white mb-2;
+  }
+
+  .section-subheading {
+    @apply text-slate-400 text-lg mb-12;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  }
+
+  .glow-button {
+    @apply relative overflow-hidden;
+  }
+
+  .glow-button::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.15), transparent 70%);
+  }
+
+  .glow-button:hover::before {
+    @apply opacity-100;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Neon glow effects */
+.neon-border {
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.3), inset 0 0 15px rgba(14, 165, 233, 0.05);
+}
+
+.neon-text {
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+}
+
+/* Animated gradient background */
+.bg-animated {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0f172a, #1e3a5f);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Particle dots bg */
+.dots-bg {
+  background-image: radial-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Skill card hover */
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+}
+
+/* Project card */
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* Form input focus */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
