@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiCamera } from 'react-icons/fi'
 import { personalInfo } from '../data/portfolioData'
+import profilePic from '../assets/profilepic.jpg'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,17 +19,7 @@ const itemVariants = {
 }
 
 export default function Hero() {
-  const [profileImg, setProfileImg] = useState(null)
-  const fileRef = useRef(null)
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onload = (ev) => setProfileImg(ev.target.result)
-      reader.readAsDataURL(file)
-    }
-  }
 
   return (
     <section
@@ -156,33 +147,16 @@ export default function Hero() {
 
             {/* Image container */}
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-primary-500/40 shadow-2xl shadow-primary-500/20 neon-border">
-              {profileImg ? (
-                <img src={profileImg} alt="Ganesh Potla" className="w-full h-full object-cover" />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-700 flex flex-col items-center justify-center text-slate-500">
-                  <div className="text-7xl mb-2">👨‍💻</div>
-                  <span className="text-sm">Your Photo Here</span>
-                </div>
-              )}
+              
+                <img src={profilePic} alt="Ganesh Potla" className="w-full h-full object-cover" />
+              
 
               {/* Edit overlay */}
-              <button
-                onClick={() => fileRef.current?.click()}
-                className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer group"
-              >
-                <FiCamera size={28} className="text-white mb-1" />
-                <span className="text-white text-sm font-medium">Change Photo</span>
-              </button>
+             
             </div>
 
             {/* Hidden file input */}
-            <input
-              ref={fileRef}
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
+            
 
             {/* Badge */}
             <motion.div
